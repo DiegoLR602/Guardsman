@@ -1,8 +1,14 @@
 import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+import NavigationBar from '../components/navigation-bar';
 
-export default MyApp
+
+export default function App({ Component, pageProps }) {
+  return (
+  <>
+    <NavigationBar/>
+    <Component {...pageProps} />
+  </>
+  )
+}

@@ -18,20 +18,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-          <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">
-            <img
-              alt=""
-              src="/hackwashulogo.png"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />{' '}
-            HACK WASHU 2022
-          </Navbar.Brand>
-        </Container>
-      </Navbar>
 
   <Container>
     <p>text</p>
