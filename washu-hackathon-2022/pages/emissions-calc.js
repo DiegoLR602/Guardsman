@@ -53,7 +53,7 @@ export default function EmissionsCalc() {
                 Calculate CO2
             </Button>
 
-              <p>Lbs of CO2 emitted: {poundsOfCO2}</p>
+              <p>Lbs of CO2 emitted: <b>{poundsOfCO2}</b></p>
           </Container>
           </>
     )
