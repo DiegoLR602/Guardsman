@@ -9,10 +9,19 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 
 export default function EmissionsCalc() {
 
+    const [gallonsOfGas, setGallonsOfGas] = useState(0.0);
 
+    const [poundsOfCO2, setPoundsOfCO2] = useState(0.0);
+
+    // 19.6 lbs CO2 per gallon
+    function calculateEmissions() {
+        setPoundsOfCO2(gallonsOfGas * 19.6);
+    }
 
     return (
         <>
@@ -25,6 +34,26 @@ export default function EmissionsCalc() {
     
           <Container>
             Emissions Calculator
+
+            <Form.Control 
+            type="number" 
+            className="mt-3" 
+            placeholder="Number of gallons" 
+            value={gallonsOfGas}
+            onChange={(event) => {
+                setGallonsOfGas(event.target.value);
+              }}
+            
+            />
+            <Button 
+            variant="primary" 
+            className="mt-3"
+            onClick={calculateEmissions}
+            >
+                Calculate CO2
+            </Button>
+
+              <p>Lbs of CO2 emitted: {poundsOfCO2}</p>
           </Container>
           </>
     )
