@@ -1,7 +1,7 @@
 import time
 import datetime
 
-def parseLog(logPath="../ex.txt"):
+def parseLog(logPath):
     output = {
         "driveSignature": "",
         "driveName": "",

@@ -20,9 +20,14 @@ def get_from_database():
     print(response.json())
     
 
-def post_to_database(parsedDict):
+def post_to_database(parsedDict, args):
     api_url = "https://natanielfarzan.wixsite.com/guardsman/_functions/addScanResult"
     
+    if(hasattr(args, "driveName")):
+        parsedDict["driveName"] = args.driveName[0]
+    
+    if(hasattr(args, "driveSignature")):
+        parsedDict["driveSignature"] = args.driveSignature[0]
     #scan_data = {"driveSignature": drive_signature, "driveName": drive_name, "date": date,"numInfectedFiles": num_infected_files, "filePaths": file_paths, "threatType": threat_type}
     
     # Get secret api key
