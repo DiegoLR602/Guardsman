@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# It is expected that this file is located in /usr/local/bin/
 # This script is called from our systemd unit file to mount or unmount
 # a USB drive.
 
@@ -87,6 +88,7 @@ do_unmount()
 case "${ACTION}" in
     add)
         do_mount
+        /bin/bash /usr/local/bin/createReport.sh ${MOUNT_POINT}
         ;;
     remove)
         do_unmount
