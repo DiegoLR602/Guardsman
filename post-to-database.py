@@ -58,8 +58,8 @@ def main():
     # file_paths = sys.argv[4]
     # threat_type = sys.argv[5]
     
-    drive_signature = "test_drive_signature6"
-    drive_name = "test_drive_name"
+    drive_signature = "test_drive_signature757"
+    drive_name = "test_drive_name253x"
     date = get_current_date_time()
     num_infected_files = 5
     file_paths = ["test_file_paths"]
