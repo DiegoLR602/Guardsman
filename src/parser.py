@@ -1,32 +1,37 @@
 import sys
+import time
+import datetime
 
-def parseOutput():
+def parseLog(logPath="ex.txt"):
     output = {
-        "Drive Name" : "",
-        "Engine" : "",
-        "Scanned Directories" : "",
-        "Scanned Files" : "",
-        "Infected Files" : "",
-        "Scan duration" : ""
+        "driveSignature": "",
+        "driveName": "",
+        "date": 0,
+        "numInfectedFiles": 0,
+        "filePaths": [],
+        "threatType": []
     }
 
-    # data = sys.stdin.readline()
-    with open('ex.txt') as f:
-    # read every line in data
-        for key, line in zip(output, f):
-            # save lines that contain a key in the dictionary
-            if key in line:
-                output[key] = line[len(key):]
-            # print("Key: ", key, ", Line: ", line)
+    with open(logPath, 'r') as f:
+        next(f)
+        lines = (line.strip() for line in f.readlines())
+        lines = (line for line in lines if line)
 
+        for line in lines:
+            if(line == "-----SCAN SUMMARY-----"):
+                break
+
+            virPath, threatType = line.split(":", 1)
+            output["filePaths"].append(virPath)
+            output["threatType"].append(threatType.strip())
+
+        for line in f:
+            lineID, lineValue = line.split(":", 1)
+
+            if(lineID == "Infected files"):
+                output["numInfectedFiles"] = lineValue
+                #extend for more options
+            elif(lineID == "Start Date"):
+                output["date"] = time.mktime(datetime.strptime(lineValue, "%Y:%m:%d %H:%M:%S"))
 
     return output
-
-def main():
-    scandict = parseOutput()
-    for key in scandict:
-        print(key, ": ", scandict[key])
-
-
-if __name__ == "__main__":
-    main()
