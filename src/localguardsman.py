@@ -1,4 +1,5 @@
 from parser import parseLog
+from send_sms import send_sms
 from post_to_database import input_dictionary, post_to_database
 import sys
 import argparse
@@ -11,6 +12,7 @@ def main():
     args = parser.parse_args()
     
     post_to_database(parseLog(args.filePath[0]), args)
+    send_sms(parseLog(args.filePath[0]))
 
 if(__name__ == "__main__"):
     main()
