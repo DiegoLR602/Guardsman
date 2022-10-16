@@ -1,9 +1,9 @@
-import secrets
 from requests.auth import HTTPBasicAuth
 import requests
 import time
 import sys
 import ast
+
 
 
 def get_from_database():
@@ -22,12 +22,7 @@ def get_from_database():
     api_url = "https://natanielfarzan.wixsite.com/scanner-database/_functions/scans"
     response = requests.get(api_url, headers=headers)
     print(response.json())
-
-
-# Get the current date and time in unix
-def get_current_date_time():
-    return time.time()
-
+    
 
 def post_to_database(drive_signature, drive_name, date, num_infected_files, file_paths, threat_type):
     api_url = "https://natanielfarzan.wixsite.com/scanner-database/_functions/addScanResult"
@@ -51,30 +46,23 @@ def post_to_database(drive_signature, drive_name, date, num_infected_files, file
     
 
 
-def main():
+def input_dictionary(input_dict):
     # Change the inputted string dictionary into a dictionary
-    scanner_output_dict = ast.literal_eval(sys.argv[1])
     
-    drive_signature = scanner_output_dict[drive_signature]
-    drive_name = scanner_output_dict[drive_name]
-    date = get_current_date_time()
-    num_infected_files = scanner_output_dict[num_infected_files]
-    file_paths = scanner_output_dict[file_paths]
-    threat_type = scanner_output_dict[threat_type]
+    drive_signature = input_dict[drive_signature]
+    drive_name = input_dict[drive_name]
+    date = time.time()
+    num_infected_files = input_dict[num_infected_files]
+    file_paths = input_dict[file_paths]
+    threat_type = input_dict[threat_type]
     
     print("Posting to database...")
     post_to_database(drive_signature, drive_name, date, num_infected_files, file_paths, threat_type)
 
 
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Invalid number of arguments")
-    else:
-        main()
-    
-    
-    # Getting pipped data
-    # data = sys.stdin.read()
-    # print("Printing from pipe:", data)
 
-    # echo "Output from program" | python3 post-to-database.py
+# Getting pipped data
+# data = sys.stdin.read()
+# print("Printing from pipe:", data)
+
+# echo "Output from program" | python3 post-to-database.py
