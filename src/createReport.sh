@@ -18,4 +18,4 @@ echo -e "\nScanning drive...\n"
 
 echo -e "**************USB GUARDSMAN REPORT***************\n" >> $FILE
 
-clamscan -r $DIR | tee -a /scans/reportfile.txt
+clamscan -r -i $DIR | tee -a /scans/reportfile.txt
