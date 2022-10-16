@@ -1,8 +1,7 @@
-import sys
 import time
 import datetime
 
-def parseLog(logPath="ex.txt"):
+def parseLog(logPath="../ex.txt"):
     output = {
         "driveSignature": "",
         "driveName": "",
@@ -25,13 +24,12 @@ def parseLog(logPath="ex.txt"):
             output["filePaths"].append(virPath)
             output["threatType"].append(threatType.strip())
 
-        for line in f:
+        for line in lines:
             lineID, lineValue = line.split(":", 1)
-
             if(lineID == "Infected files"):
-                output["numInfectedFiles"] = lineValue
+                output["numInfectedFiles"] = int(lineValue)
                 #extend for more options
             elif(lineID == "Start Date"):
-                output["date"] = time.mktime(datetime.strptime(lineValue, "%Y:%m:%d %H:%M:%S"))
+                output["date"] = time.mktime(datetime.datetime.timetuple(datetime.datetime.strptime(lineValue.strip(), "%Y:%m:%d %H:%M:%S")))
 
     return output

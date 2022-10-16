@@ -6,7 +6,7 @@
 Known viruses: 69420
 Engine version: 0.103.6
 Scanned directories: 1
-Infected files: 0
+Infected files: 1
 Data scanned: 69.420 MB
 Data read: 69.420 MB (ratio 1.0:1.0)
 Time: 10.025 sec (0 m 10 s)
