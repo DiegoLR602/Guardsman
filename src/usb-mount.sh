@@ -88,7 +88,7 @@ do_unmount()
 case "${ACTION}" in
     add)
         do_mount
-        /bin/bash /usr/local/bin/createReport.sh ${MOUNT_POINT}
+        /bin/bash /usr/local/bin/createReport.sh ${MOUNT_POINT} ${DEVICE}
         ;;
     remove)
         do_unmount

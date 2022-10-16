@@ -4,7 +4,7 @@ from post_to_database import post_to_database
 import argparse
 
 def main():
-    parser = argparse.ArgumentParser(description="Arguemnts for GuardsMan")
+    parser = argparse.ArgumentParser(description="Arguements for GuardsMan")
     parser.add_argument("filePath", metavar="FP", type=str, nargs=1, help="The path to the log file")
     parser.add_argument('-n', '--drive-name', dest="driveName", metavar="DN", type=str, nargs=1, help="The name of the drive", required=False, default="")
     parser.add_argument('-s', '--drive-signature', dest="driveSignature", metavar="DS", type=str, nargs=1, help="The signature of the drive", required=False, default="")
